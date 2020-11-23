@@ -3,14 +3,13 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-//Auth::routes();
+Auth::routes();
 
 Route::get('/', function () {
     return view('auth.login');
 });
 
-
-//Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::group(['prefix' => 'user'], function () {
@@ -21,5 +20,5 @@ Route::get('/', function () {
         });
     });
 
-//});
+});
 
