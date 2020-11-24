@@ -53,14 +53,13 @@ class ProductsService
 
         if($insert){
             if (isset($request['images'])) {
-
                 foreach ($request['images'] as $image){
+//                    dd($product->id);
                     $filename = Storage::disk('public')->putFile($product->id, $image);
                     $images = [
                         'image' => $filename,
                         'product_id' => $product->id,
                     ];
-
                     $imageProduct = new ProductImage($images);
                     $this->imageRepository->save($imageProduct);
                 }
