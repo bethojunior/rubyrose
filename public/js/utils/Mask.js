@@ -1,14 +1,26 @@
 class Mask {
 
-    static idUrl(position)
+    static idUrl()
     {
         return new Promise(resolve => {
             let url = window.location.href;
             url = url.toString();
-            let length = (url.split("/").length - position);
+            let length = (url.split("/").length - 1);
             url = url.split("/");
             resolve(url[length]);
         })
+    }
+
+    /**
+     *
+     * @param duration
+     * @returns {string[]}
+     */
+    static secondsToMinutes(duration)
+    {
+        let minutes   = (duration / 60);
+        minutes = minutes.toString();
+        return minutes.split('.');
     }
 
     static createCodeFavorite(nickname,idDriver) {
@@ -31,9 +43,9 @@ class Mask {
         let hour = date_complete.substr('10','9');
         date = date.split('-');
         if(return_hour){
-            return date[2]+'/'+date[1]+'/'+date[0]+' - '+hour;
+            return date[2]+'/'+date[1]+'/'+date[0]+'  '+hour;
         }
-        return date[1]+'/'+date[2]+'/'+date[0];
+        return date[2]+'/'+date[1]+'/'+date[0];
     }
 
     static return_date(date_complete,what) {
@@ -43,7 +55,7 @@ class Mask {
         if(what === 'hour'){
             return hour;
         }
-        return date[1]+'/'+date[2]+'/'+date[0];
+        return date[2]+'/'+date[1]+'/'+date[0];
 
     }
 
@@ -73,15 +85,6 @@ class Mask {
             }
         });
     }
-
-    static phone(element)
-    {
-        elementProperty.addEventInElement(element,'oninput',function (e){
-            var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,4})(\d{0,4})/);
-            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
-        })
-    }
-
 
     static setMaskPhoneValue(val){
         const mask = val.replace(/\D/g, '').length === 11 ?
@@ -113,73 +116,51 @@ class Mask {
 
     /**
      *
-     * @param nameElement {String}
+     * @param nameElement
+     * @param position
      */
-    static setMoneyField(nameElement,valueDefault= "100000") {
-        elementProperty.getElement(nameElement, element => {
-            element.type = 'tel';
-            element.value = element.value.length > 0 ? element.value : '0,00';
-            element.style.textAlign = 'right';
-            element.setAttribute("max-value", valueDefault);
-        });
-
-        $(nameElement).maskMoney({prefix:'', allowNegative: true,allowZero:true, thousands:'.', decimal:',', affixesStay: false});
-
-        /*const elementProperty = new ElementProperty();
+    static setMoneyField(nameElement , position = 'right') {
+        const elementProperty = new ElementProperty();
 
         elementProperty.getElement(nameElement, element => {
             element.type = 'tel';
-            element.value = element.value.length > 0 ? element.value : '0,00';
-            element.style.textAlign = 'right';
-            element.setAttribute("max-value", valueDefault);
+            element.value = '0.00';
+            element.style.textAlign = position;
+            // element.setAttribute("max-value", "10000000000000000000000000000000000000");
         });
 
-        elementProperty.addEventInElement(nameElement, "onclick", function () {
+        elementProperty.addEventInElement(nameElement,"onclick",function() {
             this.selectionStart = this.selectionEnd = this.value.toString().length;
         });
 
-        elementProperty.addEventInElement(nameElement, "onkeypress", function (event) {
-            const removeLastNumber = "Backspace";
-
-            const isNumber = /^[0-9]$/i.test(event.key);
-
-            if (!isNumber && event.key !== removeLastNumber)
-                return false;
-        });
-
         elementProperty.addEventInElement(nameElement, "onkeyup", function (event) {
-            const removeLastNumber = "Backspace";
-
-            const isNumber = /^[0-9]$/i.test(event.key);
-
-            if (!isNumber && event.key !== removeLastNumber)
-                return false;
 
             const maxValue = parseFloat(this.getAttribute("max-value"));
 
-            let valueText = this.value.replace(/\./g, "").replace(/\,/g, ".");
-
-            if (isNumber)
-                valueText += event.key;
+            const valueText = this.value.replace(/\./g, "").replace(/\,/g, ".");
 
             let digit = 10;
 
             if (!valueText.includes(".")) {
                 digit = 0.01;
             }
-            if (event.key === removeLastNumber) {
+
+            if (event.keyCode === 8) {
                 digit = 0.1;
             }
 
-            const newValue = valueText * digit;
+            if (event.keyCode === 16)
+                return
+
+
+            const newValue = parseFloat(valueText) * digit;
 
             const value = newValue > maxValue ? maxValue : newValue;
 
             if (isNaN(value))
-                return false;
+                return;
 
-            const valueInArray = toFixed(value, 2)
-                .replace(/\./g, ",").split(",");
+            const valueInArray = value.toFixed(2).toString().replace(/\./g, ".").split(".");
 
             const valueRest = valueInArray[1];
 
@@ -195,27 +176,11 @@ class Mask {
                 newValueFormat = number + newValueFormat;
             });
 
-            newValueFormat = newValueFormat + "," + valueRest;
+            newValueFormat = newValueFormat + "." + valueRest;
 
             this.value = newValueFormat;
 
-            this.dispatchEvent(new CustomEvent("changeValueMask", {
-                value: newValueFormat
-            }));
-
-            return false;
         });
-
-        function toFixed(number, dec) {
-            const separate = number.toString().split(".");
-
-            let decimal = "00";
-
-            if (separate.length > 1)
-                decimal = ((separate[1]).slice(0, dec)+"00").slice(0,2);
-
-            return `${separate[0]}.${decimal}`;
-        }*/
     }
 
     /**
@@ -387,6 +352,11 @@ class Mask {
         });
     }
 
+    /**
+     *
+     * @param number
+     * @returns {string}
+     */
     static maskPhone(number) {
         let res = number.replace("(", "");
         res = res.replace(")", "");
@@ -395,10 +365,29 @@ class Mask {
         return res;
     }
 
+    /**
+     *
+     * @param string
+     * @returns {*|void}
+     */
+    static removeEmptySpaces(string)
+    {
+        return string.replace(/\s+/g, '');
+    }
+
+    /**
+     *
+     * @param name
+     */
     static setMaskCpf(name) {
         $(name).mask('000.000.000-00', {reverse: true});
     }
 
+    /**
+     *
+     * @param number
+     * @returns {string}
+     */
     static whats(number) {
         let res = number.replace("(", "");
         res = res.replace(")", "");
@@ -406,4 +395,50 @@ class Mask {
         res = res.replace("-", "");
         return res;
     }
+
+    /**
+     *
+     * @param field
+     * @returns {string|*}
+     */
+    static isNull(field,name = false, isPhone = false)
+    {
+        if(field === null || field === '' || field === undefined){
+            if(name)
+                return name+' não informado';
+            return 'Não informado';
+        }
+        return field;
+    }
+
+    static detectCardType(number) {
+        const types = {
+            visa: /^4[0-9]{12}(?:[0-9]{3})?$/,
+            mastercard: /^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/,
+            amex: /^3[47][0-9]{13}$/,
+
+        };
+
+        for(let key in types) {
+            if(types[key].test(number)) {
+                return key
+            }
+        }
+        return false;
+    }
+
+    /**
+     *
+     * @param params
+     * @returns {number}
+     * @constructor
+     */
+    static sendValueForBackEnd(params)
+    {
+        params = params.replace(",", ".");
+        params = parseFloat(params);
+        return params;
+    }
+
+
 }

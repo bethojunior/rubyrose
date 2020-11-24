@@ -1,8 +1,8 @@
 @extends('layouts.page')
 
-@section('title', 'Tipos de produto ')
+@section('title', 'Inserir produtos')
 @section('content_header')
-    <h1 class="m-0 text-dark">Produtos</h1>
+    <h1 class="m-0 text-dark">Inserir Produtos</h1>
 @stop
 
 @section('content')
@@ -16,7 +16,7 @@
 
         <div class="form-group col-lg-4 col-sm-12">
             <span>Tipo</span>
-            <select class="col-lg-12 col-sm-12 js-example-basic-single" name="state">
+            <select class="col-lg-12 col-sm-12 js-example-basic-single form-control" name="type_product_id">
                 @foreach($types as $type)
                     <option value="{{ $type->id }}">{{ $type->name }}</option>
                 @endforeach
@@ -35,35 +35,19 @@
 
         <div class="form-group col-lg-12 col-sm-12">
             <span>Descrição</span>
-            <textarea class="form-control" name="description" id="" cols="30" rows="10"></textarea>
+            <textarea class="form-control" name="description" id="" cols="10" rows="5"></textarea>
         </div>
 
-        <div class="col-lg-12 col-sm-12">
-            <input type="submit" class="btn btn-outline-info" value="Salvar">
+        <div class="col-sm-12 col-lg-12">
+            <input required id="input-b3" name="images[]" type="file" class="file" multiple
+                   data-show-upload="false" data-show-caption="true" data-msg-placeholder="Selecione imagens para upload">
+        </div>
+
+        <div class="col-lg-12 col-sm-12" style="margin-top: 2vw">
+            <input type="submit" class="btn btn-success" value="Salvar">
         </div>
     </form>
 
-    <div class="row col-lg-12 col-sm-12">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-            </tr>
-            </thead>
-            <tbody>
-{{--            @foreach($types as $type)--}}
-{{--                <tr class="type-{{$type->id}}">--}}
-{{--                    <th scope="row">{{ $type->id }}</th>--}}
-{{--                    <th scope="row">{{ $type->name }}</th>--}}
-{{--                    <th scope="row">--}}
-{{--                        <button id="{{ $type->id }}" class="btn btn-outline-danger delete-type">Excluir</button>--}}
-{{--                    </th>--}}
-{{--                </tr>--}}
-{{--            @endforeach--}}
-            </tbody>
-        </table>
-    </div>
 @stop
 
 @section('js')

@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'products'], function () {
         Route::group(['as' => 'products'], function () {
             Route::get('', 'Products\ProductsController@index')->name('.index');
+            Route::get('list', 'Products\ProductsController@show')->name('.show');
             Route::post('insert', 'Products\ProductsController@insert')->name('.insert');
         });
     });

@@ -238,17 +238,27 @@ return [
         ['header' => 'Gerenciamento de produtos'],
         [
             'text' => 'Gerenciamento',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fa fa-cog',
             'submenu' => [
                 [
                     'text' => 'Tipos de produto',
-                    'icon' => 'fas fa-fw fa-user',
+                    'icon' => 'fa fa-cogs',
                     'url'  => 'typeProduct'
                 ],
                 [
                     'text' => 'Produtos',
-                    'icon' => 'fas fa-fw fa-user',
-                    'url'  => 'products'
+                    'icon' => 'fa fa-cogs',
+                    'submenu' => [
+                        [
+                            'text' => 'Inserir Produto',
+                            'url'  => 'products'
+                        ],
+                        [
+                            'text' => 'Listar Produto',
+                            'url'  => 'products/list'
+                        ],
+
+                    ]
                 ]
             ]
         ],

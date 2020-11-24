@@ -29,8 +29,8 @@ class MailNotification extends Mailable
      */
     public function build()
     {
-        return $this->from('suporte@fabrica704.com.br', 'Suporte')
-            ->replyTo('suporte@fabrica704.com.br','Suporte')
+        return $this->from('eu@betho.com.br', 'Suporte')
+            ->replyTo('eu@betho.com.br','Suporte')
             ->view($this->body->getTemplate())
             ->text($this->body->getBody())
             ->with($this->body->getParamsView());
