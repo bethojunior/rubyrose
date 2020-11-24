@@ -21,6 +21,7 @@ class ProductsRepository extends AbstractRepository
     {
         return $this->getModel()
             ::with('images')
+            ->with('type')
             ->get();
     }
 }
