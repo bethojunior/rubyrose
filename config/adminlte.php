@@ -235,17 +235,24 @@ return [
                 ]
             ]
         ],
-//        ['header' => 'Clientes'],
-//        [
-//            'text'  => 'Gerenciar clientes',
-//            'route' => '/',
-//            'icon'  => 'fas fa-fw fa-users',
-//        ],
-//        [
-//            'text'  => 'Gerenciar aplicativos',
-//            'route' => '/',
-//            'icon'  => 'fas fa-fw fa-mobile-alt',
-//        ],
+        ['header' => 'Gerenciamento de produtos'],
+        [
+            'text' => 'Gerenciamento',
+            'icon' => 'fas fa-fw fa-user',
+            'submenu' => [
+                [
+                    'text' => 'Tipos de produto',
+                    'icon' => 'fas fa-fw fa-user',
+                    'url'  => 'typeProduct'
+                ],
+                [
+                    'text' => 'Produtos',
+                    'icon' => 'fas fa-fw fa-user',
+                    'url'  => 'products'
+                ]
+            ]
+        ],
+
 
     ],
 
@@ -307,7 +314,7 @@ return [
         ],
         [
             'name' => 'Select2',
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

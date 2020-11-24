@@ -20,5 +20,19 @@ Route::group(['middleware' => 'auth'], function () {
         });
     });
 
+    Route::group(['prefix' => 'products'], function () {
+        Route::group(['as' => 'products'], function () {
+            Route::get('', 'Products\ProductsController@index')->name('.index');
+            Route::post('insert', 'Products\ProductsController@insert')->name('.insert');
+        });
+    });
+
+    Route::group(['prefix' => 'typeProduct'], function () {
+        Route::group(['as' => 'typeProduct'], function () {
+            Route::get('', 'TypeProduct\TypeProductController@index')->name('.index');
+            Route::post('insert', 'TypeProduct\TypeProductController@insert')->name('.insert');
+        });
+    });
+
 });
 

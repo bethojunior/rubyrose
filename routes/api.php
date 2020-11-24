@@ -19,3 +19,9 @@ Route::group(['prefix' => 'user'], function () {
         Route::delete('{id}','User\UserController@destroy');
     });
 });
+
+Route::group(['prefix' => 'typeProduct'], function () {
+    Route::group(['as' => 'typeProduct'], function () {
+        Route::delete('{id}', 'TypeProduct\TypeProductController@destroy')->name('.destroy');
+    });
+});
