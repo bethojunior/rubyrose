@@ -33,23 +33,14 @@ class UserService
     }
 
     /**
-     * @param User $user
      * @param array $request
-     * @return User
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
      */
-    public function update(User $user, array $request)
+    public function update(array $request)
     {
-
-        $user->name = $request['name'] ?? $user->name;
-        $user->email = $request['email'] ?? $user->email;
-        $user->phone = $request['phone'] ?? $user->phone;
-        $user->password = isset($request['password']) ?
-            bcrypt($request['password']) :
-            $user->password;
-
-        $user->save();
-
-        return $user;
+        $result = $this->repository->find($request['id']);
+        $result->update($request);
+        return $result;
     }
 
     /**
@@ -61,8 +52,7 @@ class UserService
     {
         try{
             DB::beginTransaction();
-
-
+            
             $data = [
                 'name'              => $request['name'],
                 'email'             => $request['email'],
@@ -103,6 +93,15 @@ class UserService
         }
 
         return $result;
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
+     */
+    public function find($id)
+    {
+        return $this->repository->find($id);
     }
 
 }

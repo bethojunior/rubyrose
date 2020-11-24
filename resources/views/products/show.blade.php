@@ -33,16 +33,16 @@
                 </div>
 
                 <div class="card-body">
-                    <h5 class="card-title">{{ $product->name }}</h5>
-                    <p class="card-text">{{ $product->description }}</p>
+                    <h5 class="card-title"><label for="">{{ $product->name }}</label></h5>
+                    <p class="card-text"><label for="">{{ $product->description }}</label></p>
                     <p>
-                        <label>Valor : R$ {{ $product->value }}</label>
+                        <span>Valor : R$ {{ $product->value }}</span>
                     </p>
                     <p>
-                        <label>Pedido minimo : {{ $product->minimum_order }} unidades</label>
+                        <span>Pedido minimo : {{ $product->minimum_order }} unidades</span>
                     </p>
                     <p>
-                        <label>Tipo do produto : {{ $product->type[0]['name'] }}</label>
+                        <span>Tipo do produto : {{ $product->type[0]['name'] }}</span>
                     </p>
 {{--                    <a href="#" class="btn btn-primary">Go somewhere</a>--}}
                 </div>

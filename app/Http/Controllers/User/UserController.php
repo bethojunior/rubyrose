@@ -96,4 +96,32 @@ class UserController extends Controller
         return ApiResponse::success('','Excluido com sucesso');
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function findById($id)
+    {
+        $user = $this->service
+            ->find($id);
+        return view('users.id')->with(['user' => $user]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request)
+    {
+        try{
+            $this->service
+                ->update($request->all());
+        }catch (\Exception $exception){
+            return redirect()->route('user.index')
+                ->with('error', $exception->getMessage());
+        }
+        return redirect()->route('user.index')
+            ->with('success', 'Usuário atualizado com sucesso');
+    }
+
 }
