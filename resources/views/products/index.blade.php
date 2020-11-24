@@ -7,7 +7,7 @@
 
 @section('content')
     @include('includes.alerts')
-    <form class="row col-lg-12 col-sm-12" method="POST" action="{{ route('products.insert') }}">
+    <form class="row col-lg-12 col-sm-12" method="POST" action="{{ route('products.insert') }}" enctype="multipart/form-data">
         @csrf
         <div class="form-group col-lg-4 col-sm-12">
             <span>Nome</span>
