@@ -33,6 +33,13 @@ class UserService
     }
 
     /**
+     * @return mixed
+     */
+    public function getAllSalesMan(){
+        return $this->repository->findAllSalesMan();
+    }
+
+    /**
      * @param array $request
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
      */
@@ -52,7 +59,7 @@ class UserService
     {
         try{
             DB::beginTransaction();
-            
+
             $data = [
                 'name'              => $request['name'],
                 'email'             => $request['email'],
