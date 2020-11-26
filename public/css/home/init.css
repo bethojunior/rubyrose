@@ -1,7 +1,9 @@
 .row.col-lg-12.col-sm-12 .card{
     margin: 0.3vw!important;
 }
-
+.row.col-lg-12.col-sm-12 .card{
+    cursor: pointer;
+}
 @media (min-width: 992px){
     .row.col-lg-12.col-sm-12 .card{
         margin: 0;

@@ -220,6 +220,12 @@ return [
             'url'         => 'home',
             'icon'        => 'fas fa-fw fa-home',
         ],
+        ['header' => 'Pedidos'],
+        [
+            'text' => 'Listagem de Pedidos',
+            'icon' => 'fa fa-ticket',
+            'url'  => 'sales'
+        ],
         ['header' => 'Usuários'],
         [
             'text' => 'Gerenciar usuários',

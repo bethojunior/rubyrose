@@ -1,46 +1,30 @@
-elementProperty.addEventInElement('.open-ticket','onclick',function () {
-    let data = JSON.parse(this.getAttribute('data'));
-
-    $('#modal-info-ticket').modal('show');
-
-    elementProperty.getElement('#title-ticket-modal', title => {
-        title.innerHTML = data.enterprise_name;
-    });
-
-    elementProperty.getElement('#title-ticket', title => {
-        title.value = data.title;
-    });
-
-    elementProperty.getElement('#api-type-ticket', app => {
-        app.value = data.appname;
-    });
-
-    elementProperty.getElement('#description-ticket', description => {
-        description.value = data.description;
-    });
-});
-
-elementProperty.addEventInElement('.badge-modal-info','onclick',function () {
-    let data = JSON.parse(this.getAttribute('data-browse'));
-    elementProperty.getElement('#body-modal-status',these => {
-        let content = data.map(item => {
-            return `
-                <tr>
-                    <th>${item.id}</th>
-                    <th>
-                        <label class="badge badge-info">${item.status_ticket}</label>
-                    </th>
-                    <th>${item.title}</th>
-                    <th>${item.enterprise_name}</th>
-                </tr>
-            `;
-        }).join('');
-        these.innerHTML = content;
+elementProperty.addEventInElement('#search-sale','oninput',function (){
+    let key = this.value;
+    elementProperty.getElement('.through-salesman', cards => {
+        let data = JSON.parse(cards.getAttribute('data'));
+        let user = cards.getAttribute('user');
+        user = user.toUpperCase();
+        if(!user.startsWith(key.toUpperCase()))
+            return cards.style.display = 'none'
+        return cards.style.display = ''
     })
 })
 
-elementProperty.addEventInElement('.open-ticket-complete','onclick',function (e) {
-    e.stopPropagation();
-    let id = this.getAttribute('id');
-    window.location.href = '/ticket/timeline/'+ id;
+elementProperty.addEventInElement('#search-sale-id','oninput',function (){
+    let key = this.value;
+    elementProperty.getElement('.through-salesman', cards => {
+        let id = cards.getAttribute('id');
+        // if(id.startsWith(key))
+        //     return cards.style.display = ''
+        // return cards.style.display = 'none'
+        if(id !== key)
+            return cards.style.display = 'none'
+        return cards.style.display = ''
+    })
+})
+
+elementProperty.addEventInElement('#clear-filter','onclick',function (){
+    elementProperty.getElement('.through-salesman', cards => {
+        return cards.style.display = ''
+    })
 })

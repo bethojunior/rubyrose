@@ -22,12 +22,13 @@
                 <h5 class="card-title">20</h5>
             </div>
         </div>
-        <div class="card text-white bg-success mb-3 col-lg-3 col-sm-12">
-            <div class="card-header center">Valor de vendas total</div>
-            <div class="card-body center">
-                <h5 class="card-title">R$ 20.000,00</h5>
-            </div>
-        </div>
+        
+{{--        <div class="card text-white bg-success mb-3 col-lg-3 col-sm-12">--}}
+{{--            <div class="card-header center">Valor de vendas total</div>--}}
+{{--            <div class="card-body center">--}}
+{{--                <h5 class="card-title">R$ 20.000,00</h5>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
     </div>
 @stop

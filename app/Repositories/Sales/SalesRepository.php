@@ -15,6 +15,18 @@ class SalesRepository extends AbstractRepository
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model[]
+     */
+    public function findAll()
+    {
+        return $this->getModel()
+            ::with('products')
+            ->with('user')
+            ->orderByDesc('id')
+            ->get();
+    }
+
+    /**
      * @param $id
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model[]
      */
