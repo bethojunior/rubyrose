@@ -29,7 +29,9 @@
                 <p>Revendedor : {{ $sale->user[0]['name'] }}</p>
                 <p>Data : {{ Carbon\Carbon::parse($sale->created_at)->format('d/m/Y')  }} hrs</p>
                 <p>Produto : {{ $sale->products[0]['name'] }}</p>
+                <p>Valor : R${{ $sale->products[0]['value'] }}</p>
                 <p>Quantidade : {{ $sale->amount }}</p>
+                <p>Valor total : R$ {{ ($sale->amount * $sale->amount) }}</p>
             </div>
         @endforeach
     </div>
