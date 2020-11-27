@@ -26,7 +26,25 @@ class SalesService
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model[]
      */
     public function getAll(){
-        return $this->repository->findAll();
+        return $this->repository
+            ->findAll();
+    }
+
+    /**
+     * @return int
+     */
+    public function countSales(){
+        return $this->repository
+            ->countSales();
+    }
+
+    /**
+     * @return int
+     */
+    public function countSalesFinished()
+    {
+        return $this->repository
+            ->countSalesFinished();
     }
 
     /**
@@ -34,7 +52,8 @@ class SalesService
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model[]
      */
     public function getAllByUser($id){
-        return $this->repository->getAllByUser($id);
+        return $this->repository
+            ->getAllByUser($id);
     }
 
     /**
@@ -42,7 +61,8 @@ class SalesService
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model[]
      */
     public function getAllByUserSalesNull($id){
-        return $this->repository->getAllByUserSalesNull($id);
+        return $this->repository
+            ->getAllByUserSalesNull($id);
     }
 
     /**
@@ -61,9 +81,6 @@ class SalesService
                 $sale->save();
                 array_push($saleId,$sale->id);
                 $sale->update(['sale_id' => $saleId[0]]);
-//
-//                $sale->sale_id = $sale->id;
-//                $this->repository->update($sale);
             }
 
             DB::commit();

@@ -17,18 +17,18 @@
         </div>
 
         <div class="card text-white bg-primary mb-3 col-lg-3 col-sm-12">
-            <div class="card-header center">Quantidade de vendas total</div>
+            <div class="card-header center">Quantidade de pedidos total</div>
             <div class="card-body center">
-                <h5 class="card-title">20</h5>
+                <h5 class="card-title">{{ $totalSales }}</h5>
             </div>
         </div>
 
-{{--        <div class="card text-white bg-success mb-3 col-lg-3 col-sm-12">--}}
-{{--            <div class="card-header center">Valor de vendas total</div>--}}
-{{--            <div class="card-body center">--}}
-{{--                <h5 class="card-title">R$ 20.000,00</h5>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+        <div class="card text-white bg-success mb-3 col-lg-3 col-sm-12">
+            <div class="card-header center">Quantidade de pedidos finalizados</div>
+            <div class="card-body center">
+                <h5 class="card-title">{{ $totalSalesFinished }}</h5>
+            </div>
+        </div>
 
     </div>
 @stop

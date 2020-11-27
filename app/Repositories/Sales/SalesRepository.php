@@ -4,6 +4,7 @@
 namespace App\Repositories\Sales;
 
 
+use App\Constants\SalesStatus;
 use App\Contracts\Repository\AbstractRepository;
 use App\Models\Sales\Sales;
 
@@ -51,5 +52,24 @@ class SalesRepository extends AbstractRepository
             ->where('user_id','=',$id)
             ->where('sale_id','=',0)
             ->get();
+    }
+
+    /**
+     * @return int
+     */
+    public function countSales()
+    {
+        return $this->getModel()
+            ::count('id');
+    }
+
+    /**
+     * @return int
+     */
+    public function countSalesFinished()
+    {
+        return $this->getModel()
+            ::where('status','=',SalesStatus::FINALIZADO)
+            ->count('id');
     }
 }
