@@ -36,7 +36,7 @@
             <div id="{{ $sale->sale_id }}" user="{{ $sale->user[0]['name'] }}" data="{{ $sale }}" class="through-salesman card col-lg-3 col-sm-12 pt-2">
                 <p> ID : {{ $sale->sale_id }} </p>
                 <p>Revendedor : {{ $sale->user[0]['name'] }}</p>
-                <p>Data : {{ Carbon\Carbon::parse($sale->created_at)->format('d/m/Y')  }} hrs</p>
+                <p>Data : {{ Carbon\Carbon::parse($sale->created_at)->format('d/m/Y - H:m:s')  }} hrs</p>
                 <p>Produto : {{ $sale->products[0]['name'] }}</p>
                 <p>Valor : R${{ $sale->products[0]['value'] }}</p>
                 <p>Quantidade : {{ $sale->amount }}</p>
