@@ -6,6 +6,7 @@
 @stop
 
 @section('content')
+    @include('includes.alerts')
     <link rel="stylesheet" href="{{ asset('css/home/init.css') }}">
     <div class="header row col-lg-12 col-sm-12">
         <div class="form-group col-lg-2 col-sm-12">
@@ -40,6 +41,18 @@
                 <p>Valor : R${{ $sale->products[0]['value'] }}</p>
                 <p>Quantidade : {{ $sale->amount }}</p>
                 <p>Valor total : R$ {{ floatval($sale->products[0]['value']) * $sale->amount}}</p>
+                <form class="form-group" method="POST" action="{{ route('sales.update') }}">
+                    @csrf
+                    @method('PUT')
+                    <input type="hidden" name="sale_id" value="{{ $sale->sale_id }}">
+
+                    <select class="form-control" name="status" id="">
+                        <option @if ( $sale->status == \App\Constants\SalesStatus::EM_ABERTO ) selected @endif value="{{ \App\Constants\SalesStatus::EM_ABERTO }}">Em aberto</option>
+                        <option @if ( $sale->status == \App\Constants\SalesStatus::FINALIZADO ) selected @endif value="{{ \App\Constants\SalesStatus::FINALIZADO }}">Finalizado</option>
+                        <option @if ( $sale->status == \App\Constants\SalesStatus::CANCELADO ) selected @endif value="{{ \App\Constants\SalesStatus::CANCELADO }}">Cancelado</option>
+                    </select>
+                    <input value="Alterar status" type="submit" class="mt-2 btn btn-info col-lg-12 col-sm-12">
+                </form>
             </div>
         @endforeach
     </div>

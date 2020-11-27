@@ -92,4 +92,14 @@ class SalesService
         return $sale;
     }
 
+    /**
+     * @param $request
+     * @return bool|int
+     */
+    public function updateStatus($request)
+    {
+        return $this->repository
+            ->updateStatus($request);
+    }
+
 }

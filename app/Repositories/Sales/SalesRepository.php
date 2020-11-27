@@ -72,4 +72,15 @@ class SalesRepository extends AbstractRepository
             ::where('status','=',SalesStatus::FINALIZADO)
             ->count('id');
     }
+
+    /**
+     * @param $params
+     * @return bool|int
+     */
+    public function updateStatus($params)
+    {
+        return $this->getModel()
+            ::where('sale_id','=',$params['sale_id'])
+            ->update(['status' => $params['status']]);
+    }
 }

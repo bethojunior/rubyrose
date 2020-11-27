@@ -55,4 +55,21 @@ class SalesController extends Controller
         return ApiResponse::success($response,'Inserido com sucesso');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateStatus(Request $request)
+    {
+        try{
+            $this->service
+                ->updateStatus($request->all());
+        }catch (\Exception $exception){
+            return redirect()->route('sales.index')
+                ->with('error', $exception->getMessage());
+        }
+        return redirect()->route('sales.index')
+            ->with('success', 'Status atualizado com sucesso');
+    }
+
 }
