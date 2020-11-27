@@ -20,7 +20,7 @@ elementProperty.addEventInElement('#search-sale-id','oninput',function (){
     })
 })
 
-elementProperty.addEventInElement('#search-by-status','onchange',function (){
+elementProperty.addEventInElement('#search-by-status','onclick',function (){
     let key = this.value;
     elementProperty.getElement('.through-salesman', cards => {
         let data = JSON.parse(cards.getAttribute('data'));

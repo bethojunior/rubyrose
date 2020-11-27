@@ -31,16 +31,22 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
+
         $salesman = $this->userService
             ->getAllSalesMan();
+
         $totalSales = $this->salesService
             ->countSales();
+
         $totalSalesFinished = $this->salesService
             ->countSalesByStatus(SalesStatus::FINALIZADO);
+
         $totalSalesCanceled = $this->salesService
             ->countSalesByStatus(SalesStatus::CANCELADO);
+
         $totalSalesWait = $this->salesService
             ->countSalesByStatus(SalesStatus::EM_ABERTO);
+
         return view('home.home')
             ->with
             (
