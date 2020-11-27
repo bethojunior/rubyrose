@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Constants\SalesStatus;
 use App\Services\Sales\SalesService;
 use App\Services\User\UserService;
 use Illuminate\Http\Request;
@@ -35,14 +36,20 @@ class HomeController extends Controller
         $totalSales = $this->salesService
             ->countSales();
         $totalSalesFinished = $this->salesService
-            ->countSalesFinished();
+            ->countSalesByStatus(SalesStatus::FINALIZADO);
+        $totalSalesCanceled = $this->salesService
+            ->countSalesByStatus(SalesStatus::CANCELADO);
+        $totalSalesWait = $this->salesService
+            ->countSalesByStatus(SalesStatus::EM_ABERTO);
         return view('home.home')
             ->with
             (
                 [
                     'salesman' => $salesman,
                     'totalSales' => $totalSales,
-                    'totalSalesFinished' => $totalSalesFinished
+                    'totalSalesFinished' => $totalSalesFinished,
+                    'totalSalesCanceled' => $totalSalesCanceled,
+                    'totalSalesWait' => $totalSalesWait,
                 ]
             );
     }

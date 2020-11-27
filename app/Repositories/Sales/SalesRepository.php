@@ -66,10 +66,10 @@ class SalesRepository extends AbstractRepository
     /**
      * @return int
      */
-    public function countSalesFinished()
+    public function countSalesByStatus($status)
     {
         return $this->getModel()
-            ::where('status','=',SalesStatus::FINALIZADO)
+            ::where('status','=',$status)
             ->count('id');
     }
 

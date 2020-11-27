@@ -39,12 +39,13 @@ class SalesService
     }
 
     /**
+     * @param $status
      * @return int
      */
-    public function countSalesFinished()
+    public function countSalesByStatus($status)
     {
         return $this->repository
-            ->countSalesFinished();
+            ->countSalesByStatus($status);
     }
 
     /**
