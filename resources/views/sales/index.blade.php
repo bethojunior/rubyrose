@@ -12,9 +12,17 @@
             <span>Buscar pelo ID</span>
             <input id="search-sale-id" class="form-control">
         </div>
-        <div class="form-group col-lg-4 col-sm-12">
+        <div class="form-group col-lg-3 col-sm-12">
             <span>Buscar pelo Revendedor</span>
             <input id="search-sale" class="form-control">
+        </div>
+        <div class="form-group col-lg-4">
+            <span>Status</span>
+            <select id="search-by-status" class="form-control">
+                <option value="{{ \App\Constants\SalesStatus::EM_ABERTO }}">Em aberto</option>
+                <option value="{{ \App\Constants\SalesStatus::CANCELADO }}">Cancelado</option>
+                <option value="{{ \App\Constants\SalesStatus::FINALIZADO }}">Finalizado</option>
+            </select>
         </div>
         <div class="form-group col-lg-2 col-sm-12">
             <span>&nbsp;</span>

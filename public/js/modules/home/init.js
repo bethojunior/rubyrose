@@ -14,10 +14,18 @@ elementProperty.addEventInElement('#search-sale-id','oninput',function (){
     let key = this.value;
     elementProperty.getElement('.through-salesman', cards => {
         let id = cards.getAttribute('id');
-        // if(id.startsWith(key))
-        //     return cards.style.display = ''
-        // return cards.style.display = 'none'
         if(id !== key)
+            return cards.style.display = 'none'
+        return cards.style.display = ''
+    })
+})
+
+elementProperty.addEventInElement('#search-by-status','onchange',function (){
+    let key = this.value;
+    elementProperty.getElement('.through-salesman', cards => {
+        let data = JSON.parse(cards.getAttribute('data'));
+        let status = data.status;
+        if(status !== key)
             return cards.style.display = 'none'
         return cards.style.display = ''
     })
