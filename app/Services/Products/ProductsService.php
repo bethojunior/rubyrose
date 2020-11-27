@@ -4,6 +4,7 @@
 namespace App\Services\Products;
 
 
+use App\Constants\ProductStatus;
 use App\Models\Products\ProductImage;
 use App\Models\Products\Products;
 use App\Repositories\Products\ProductsImageRepository;
@@ -36,6 +37,15 @@ class ProductsService
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model[]
+     */
+    public function findAllShow()
+    {
+        return $this->repository
+            ->findAllShow();
+    }
+
+    /**
      * @param array $request
      */
     public function insert(array $request)
@@ -46,6 +56,7 @@ class ProductsService
             'description' => $request['description'],
             'minimum_order' => $request['minimum_order'],
             'value' => $request['value'],
+            'status' => ProductStatus::ATIVO
         ];
         $product = new Products($data);
 
@@ -54,7 +65,6 @@ class ProductsService
         if($insert){
             if (isset($request['images'])) {
                 foreach ($request['images'] as $image){
-//                    dd($product->id);
                     $filename = Storage::disk('public')->putFile($product->id, $image);
                     $images = [
                         'image' => $filename,
@@ -68,5 +78,16 @@ class ProductsService
         }
 
         return true;
+    }
+
+    /**
+     * @param $request
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
+     */
+    public function updateStatus($request)
+    {
+        $result = $this->repository->find($request['id']);
+        $result->update($request);
+        return $result;
     }
 }

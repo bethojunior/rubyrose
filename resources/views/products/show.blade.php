@@ -10,7 +10,7 @@
 {{--    {{ dd($products) }}--}}
     <div class="row col-lg-12 col-sm-12">
         @foreach($products as $product)
-            <div class="card col-lg-4 col-sm-12">
+            <div class="card col-lg-4 col-sm-12 pt-2 m-1">
                 <div id="carouselExampleControls{{$product->id}}" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active item-carousel">
@@ -44,7 +44,21 @@
                     <p>
                         <span>Tipo do produto : {{ $product->type[0]['name'] }}</span>
                     </p>
-{{--                    <a href="#" class="btn btn-primary">Go somewhere</a>--}}
+                    <p>
+                        <span>
+                            Status :
+                            @if($product->status == \App\Constants\ProductStatus::ATIVO) Ativo @endif
+                            @if($product->status == \App\Constants\ProductStatus::DESATIVADO) Desativado @endif
+                        </span>
+                    </p>
+                    <form method="POST" action="{{ route('products.update') }}">
+                        @csrf
+                        @method('POST')
+                        <input type="hidden" name="id" value="{{ $product->id }}">
+                        <input type="hidden" name="status" value="@if($product->status == \App\Constants\ProductStatus::ATIVO) {{ \App\Constants\ProductStatus::DESATIVADO }} @endif @if($product->status == \App\Constants\ProductStatus::DESATIVADO) {{\App\Constants\ProductStatus::ATIVO}} @endif">
+
+                        <input id="{{ $product->id }}" type="submit" value="@if($product->status == \App\Constants\ProductStatus::ATIVO)Desativar @endif @if($product->status == \App\Constants\ProductStatus::DESATIVADO) Ativar @endif" class="disable-product col-lg-12 col-sm-12 btn btn-danger">
+                    </form>
                 </div>
             </div>
         @endforeach
