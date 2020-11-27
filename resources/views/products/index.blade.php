@@ -9,18 +9,22 @@
     @include('includes.alerts')
     <form class="row col-lg-12 col-sm-12" method="POST" action="{{ route('products.insert') }}" enctype="multipart/form-data">
         @csrf
-        <div class="form-group col-lg-4 col-sm-12">
+        <div class="form-group col-lg-3 col-sm-12">
             <span>Nome</span>
             <input required type="text" name="name" class="form-control">
         </div>
 
-        <div class="form-group col-lg-4 col-sm-12">
+        <div class="form-group col-lg-3 col-sm-12">
             <span>Tipo</span>
             <select class="col-lg-12 col-sm-12 js-example-basic-single form-control" name="type_product_id">
                 @foreach($types as $type)
                     <option value="{{ $type->id }}">{{ $type->name }}</option>
                 @endforeach
             </select>
+        </div>
+        <div class="form-group col-lg-2 col-sm-12">
+            <span>Cor</span>
+            <input required type="color" name="color" id="color" class="form-control">
         </div>
 
         <div class="form-group col-lg-2 col-sm-12">

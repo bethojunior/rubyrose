@@ -56,6 +56,7 @@ class ProductsService
             'description' => $request['description'],
             'minimum_order' => $request['minimum_order'],
             'value' => $request['value'],
+            'color' => $request['color'],
             'status' => ProductStatus::ATIVO
         ];
         $product = new Products($data);

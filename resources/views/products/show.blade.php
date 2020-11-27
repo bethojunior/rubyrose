@@ -8,9 +8,9 @@
 @section('content')
     @include('includes.alerts')
 {{--    {{ dd($products) }}--}}
-    <div class="row col-lg-12 col-sm-12">
+    <div class="row">
         @foreach($products as $product)
-            <div class="card col-lg-4 col-sm-12 pt-2 m-1">
+            <div class="card col-lg-3 col-sm-12 pt-2 m-1">
                 <div id="carouselExampleControls{{$product->id}}" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active item-carousel">
@@ -36,13 +36,13 @@
                     <h5 class="card-title"><label for="">{{ $product->name }}</label></h5>
                     <p class="card-text"><label for="">{{ $product->description }}</label></p>
                     <p>
+                        <span>Cor : <span style="background-color: {{ $product->color }}" class="badge badge-secondary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+                    </p>
+                    <p>
                         <span>Valor : R$ {{ $product->value }}</span>
                     </p>
                     <p>
                         <span>Pedido minimo : {{ $product->minimum_order }} unidades</span>
-                    </p>
-                    <p>
-                        <span>Tipo do produto : {{ $product->type[0]['name'] }}</span>
                     </p>
                     <p>
                         <span>
