@@ -27,4 +27,7 @@ elementProperty.addEventInElement('#clear-filter','onclick',function (){
     elementProperty.getElement('.through-salesman', cards => {
         return cards.style.display = ''
     })
+    elementProperty.getElement('#search-sale-id', these => {
+        these.value = '';
+    })
 })
