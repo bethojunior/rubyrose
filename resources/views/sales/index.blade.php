@@ -34,9 +34,7 @@
 {{--    {{ $sales }}--}}
     <div class="row col-lg-12 col-sm-12">
         @foreach($sales as $key => $sale)
-
             <div id="{{ $key }}" user="{{ $sale[0]['user'][0]['name'] }}" data="{{ $sale[0] }}" class="through-salesman card col-lg-12 col-sm-12 pt-2">
-
                 <p>ID : {{ $key }} </p>
                 <p>Revendedor : {{ $sale[0]['user'][0]['name'] }}</p>
                 <p>Data : {{ Carbon\Carbon::parse($sale[0]['created_at'])->format('d/m/Y - H:m:s')  }} hrs</p>

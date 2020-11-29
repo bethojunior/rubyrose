@@ -38,15 +38,9 @@ class SalesController extends Controller
         //Monta array de Vendas por sale_id
         $sales_grouped = [];
         foreach ($sales as $sale) {
-//            dd($sale);
             $sales_grouped[$sale->sale_id][] = $sale;
-//            $sales_grouped[$sale->sale_id][] = [
-//                'id'  => $sale->sale_id,
-//                'content' => $sale
-//            ];
         }
 
-//        dd($sales_grouped);
         $users = $this->userService
             ->getAllSalesMan();
         return view('sales.index')->with(['sales' => $sales_grouped, 'users' => $users]);
