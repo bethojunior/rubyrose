@@ -33,6 +33,8 @@
 {{--    {{ $sales }}--}}
     <div class="row col-lg-12 col-sm-12">
         @foreach($sales as $key => $sale)
+
+            //Erro ta nessa div
                 <div id="{{ $key }}" user="{{ $sale[0]->user[0]['name'] }}" data="{{ $sale }}" class="through-salesman card col-lg-3 col-sm-12 pt-2">
                     <p>ID : {{ $key }} </p>
                     <p>Revendedor : {{ $sale[0]->user[0]['name'] }}</p>
