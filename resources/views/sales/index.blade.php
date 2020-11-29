@@ -52,6 +52,9 @@
 
                         <div id="collapseOne{{$key}}" class="collapse show" aria-labelledby="headingOne{{$key}}" data-parent="#accordionExample">
                             <div class="card-body">
+                                @php
+                                    $total = 0;
+                                @endphp
                                 <div class="card pt-2 pl-2">
                                     @foreach($sale as $both)
                                         <p>
@@ -59,7 +62,7 @@
                                             {{ $both->products[0]['name'] }}
                                         </p>
                                         <p>
-                                            Valor :
+                                            Valor unitário:
                                             R${{ $both->products[0]['value']}}
                                         </p>
                                         <p>
@@ -67,10 +70,19 @@
                                         </p>
                                         <p>
                                             Valor total : R$
+                                            @php
+                                                $total = $total + (floatval($both->products[0]['value']) * $both->amount) ;
+                                            @endphp
                                             {{ floatval($both->products[0]['value']) * $both->amount }}
                                         </p>
                                         <hr>
                                     @endforeach
+                                </div>
+                                <div class="card pt-2 pl-2">
+                                    <p>
+                                        <h5>Valor total do pedido :</h5>
+                                        <b>R$ {{ $total }}</b>
+                                    </p>
                                 </div>
                             </div>
                         </div>
