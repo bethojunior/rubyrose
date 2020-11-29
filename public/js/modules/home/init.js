@@ -1,3 +1,4 @@
+$('.collapse').collapse()
 elementProperty.addEventInElement('#search-sale','oninput',function (){
     let key = this.value;
     elementProperty.getElement('.through-salesman', cards => {
@@ -38,4 +39,9 @@ elementProperty.addEventInElement('#clear-filter','onclick',function (){
     elementProperty.getElement('#search-sale-id', these => {
         these.value = '';
     })
+})
+
+elementProperty.addEventInElement('.through-salesman','onclick',function (){
+    let data = JSON.parse(this.getAttribute('data'));
+    console.log(data)
 })
