@@ -50,6 +50,9 @@ class ProductsService
      */
     public function insert(array $request)
     {
+        if($request['promotional_value'] == '0.00')
+            $request['promotional_value'] = null;
+
         $data = [
             'name'  => $request['name'],
             'type_product_id'  => $request['type_product_id'],

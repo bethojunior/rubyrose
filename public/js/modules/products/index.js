@@ -3,4 +3,5 @@ $(document).ready(function() {
 });
 
 Mask.setMoneyField('#value-product')
+Mask.setMoneyField('#value-promotional-product')
 

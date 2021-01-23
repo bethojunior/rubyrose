@@ -33,6 +33,11 @@
         </div>
 
         <div class="form-group col-lg-2 col-sm-12">
+            <span>Valor promocional</span>
+            <input id="value-promotional-product" required type="text" name="promotional_value" class="form-control">
+        </div>
+
+        <div class="form-group col-lg-2 col-sm-12">
             <span>Qtd Mininma</span>
             <input required type="number" name="minimum_order" class="form-control">
         </div>
