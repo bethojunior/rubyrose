@@ -13,6 +13,13 @@
                 <p> {{ $blog->title }} </p>
                 <p> {{ $blog->content }} </p>
                 <img src="{{ asset('storage/').'/'.$blog->image }}">
+                <p>
+                    <form method="POST" action="{{ route('blog.destroy' , $blog->id) }}">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-danger">DELETAR</button>
+                    </form>
+                </p>
             </div>
         @endforeach
     </div>

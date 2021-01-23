@@ -58,4 +58,21 @@ class BlogController extends Controller
             ->with('success', 'Blog inserido com sucesso');
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy($id)
+    {
+        try {
+            $this->service
+                ->delete($id);
+        } catch (\Exception $exception){
+            return redirect()->route('blog.list')
+                ->with('error', 'Erro ao excluir blog');
+        }
+        return redirect()->route('blog.list')
+            ->with('success', 'Blog excluido com sucesso');
+    }
+
 }

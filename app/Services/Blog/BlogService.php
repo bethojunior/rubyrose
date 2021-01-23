@@ -60,4 +60,25 @@ class BlogService
 
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
+     * @throws \Exception
+     */
+    public function delete($id)
+    {
+        try{
+            DB::beginTransaction();
+            $result = $this->repository->find($id);
+            $result->delete();
+            DB::commit();
+        }catch (\Exception $exception){
+            DB::rollBack();
+            throw $exception;
+        }
+
+        return $result;
+    }
+
+
 }
