@@ -45,5 +45,13 @@ Route::group(['middleware' => 'auth'], function () {
         });
     });
 
+    Route::group(['prefix' => 'blog'], function () {
+        Route::group(['as' => 'blog'], function () {
+            Route::get('', 'Blog\BlogController@index')->name('.index');
+            Route::get('list', 'Blog\BlogController@list')->name('.list');
+            Route::post('', 'Blog\BlogController@create')->name('.create');
+        });
+    });
+
 });
 

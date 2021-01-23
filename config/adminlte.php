@@ -226,6 +226,21 @@ return [
             'icon' => 'fa fa-ticket',
             'url'  => 'sales'
         ],
+        ['header' => 'Blog'],
+        [
+            'text' => 'Gereciamento de Blog',
+            'icon' => 'fas fa-fw fa-blog',
+            'submenu' => [
+                [
+                    'text' => 'Listagem de  Blog',
+                    'url'  => 'blog/list'
+                ],
+                [
+                    'text' => 'Inserir blog',
+                    'url'  => 'blog'
+                ]
+            ]
+        ],
         ['header' => 'Usuários'],
         [
             'text' => 'Gerenciar usuários',

@@ -7,7 +7,6 @@
 
 @section('content')
     @include('includes.alerts')
-{{--    {{ dd($products) }}--}}
     <div class="row">
         @foreach($products as $product)
             <div class="card col-lg-3 col-sm-12 pt-2 m-1">
@@ -40,6 +39,9 @@
                     </p>
                     <p>
                         <span>Valor : R$ {{ $product->value }}</span>
+                    </p>
+                    <p>
+                        <span>Valor promocional : R$ {{ $product->promotional_value }}</span>
                     </p>
                     <p>
                         <span>Pedido minimo : {{ $product->minimum_order }} unidades</span>
