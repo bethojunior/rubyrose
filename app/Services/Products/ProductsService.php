@@ -50,8 +50,9 @@ class ProductsService
      */
     public function insert(array $request)
     {
-        if($request['promotional_value'] == '0.00')
+        if($request['promotional_value'] === '0.00'){
             $request['promotional_value'] = null;
+        }
 
         $data = [
             'name'  => $request['name'],
@@ -60,6 +61,7 @@ class ProductsService
             'minimum_order' => $request['minimum_order'],
             'value' => $request['value'],
             'color' => $request['color'],
+            'promotional_value' => $request['promotional_value'],
             'status' => ProductStatus::ATIVO
         ];
         $product = new Products($data);

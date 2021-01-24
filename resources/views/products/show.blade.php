@@ -40,9 +40,11 @@
                     <p>
                         <span>Valor : R$ {{ $product->value }}</span>
                     </p>
-                    <p>
-                        <span>Valor promocional : R$ {{ $product->promotional_value }}</span>
-                    </p>
+                    @if($product->promotional_value !== null)
+                        <p class="badge-info pl-1">
+                            <span>Valor promocional : R$ {{ $product->promotional_value }}</span>
+                        </p>
+                    @endif
                     <p>
                         <span>Pedido minimo : {{ $product->minimum_order }} unidades</span>
                     </p>
