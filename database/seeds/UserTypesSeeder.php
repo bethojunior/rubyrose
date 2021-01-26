@@ -15,5 +15,9 @@ class UserTypesSeeder extends Seeder
             ['name' => 'ADMIN'],
             ['name' => 'REVENDEDORA'],
         ]);
+
+        DB::table('us')->insert(
+            ['content' => 'teste']
+        );
     }
 }
