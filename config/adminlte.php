@@ -226,6 +226,12 @@ return [
             'icon' => 'fa fa-ticket',
             'url'  => 'sales'
         ],
+        ['header' => 'Sobre nós'],
+        [
+            'text' => 'Sobre nós',
+            'icon' => 'fa fa-users',
+            'url'  => 'us'
+        ],
         ['header' => 'Blog'],
         [
             'text' => 'Gereciamento de Blog',
