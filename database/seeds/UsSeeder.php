@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class usSeeder extends Seeder
+class UsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,8 +11,8 @@ class usSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('us')->insert([
+        DB::table('us')->insert(
             ['content' => 'teste']
-        ]);
+        );
     }
 }
