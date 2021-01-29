@@ -52,7 +52,7 @@
             @foreach($product->images as $path)
                 <div class="col-lg-3 card pb-2">
                     <img class="col-lg-12" src="{{ asset('storage/').'/'.$path->image }}">
-                    <button id="{{ $path->id }}" class="btn btn-danger col-lg-12 delete-image">Deletar</button>
+                    <button type="button" id="{{ $path->id }}" class="btn btn-danger col-lg-12 delete-image">Deletar</button>
                 </div>
             @endforeach
         </div>
