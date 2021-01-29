@@ -7,9 +7,10 @@ elementProperty.addEventInElement('.delete-image','onclick',function (e){
     SwalCustom.dialogConfirm('Deseja apagar essa imagem?','',function (){
         ProductController.deleteImage(id).then(response => {
             if(response.status)
-                return swal('Erro ao deletar imagem','Contate o suporte','error');
+                return swal('Imagem excluida com sucesso', '', 'success');
+                
+            return swal('Erro ao deletar imagem', 'Contate o suporte', 'error');
 
-            return swal('Imagem excluida com sucesso','','success');
         })
     })
 })
