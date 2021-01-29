@@ -25,3 +25,9 @@ Route::group(['prefix' => 'typeProduct'], function () {
         Route::delete('{id}', 'TypeProduct\TypeProductController@destroy')->name('.destroy');
     });
 });
+
+Route::group(['prefix' => 'productsImage'], function () {
+    Route::group(['as' => 'productsImage'], function () {
+        Route::delete('{id}', 'Products\ProductsController@deleteImage');
+    });
+});

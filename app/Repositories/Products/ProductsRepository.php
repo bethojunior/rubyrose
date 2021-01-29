@@ -34,4 +34,18 @@ class ProductsRepository extends AbstractRepository
             ->where('status','=',ProductStatus::ATIVO)
             ->get();
     }
+
+    /**
+     * @param int $id
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model[]
+     */
+    public function findById(int $id)
+    {
+        return $this->getModel()
+            ::with('images')
+            ->with('type')
+            ->where('status','=',ProductStatus::ATIVO)
+            ->where('id','=',$id)
+            ->get();
+    }
 }

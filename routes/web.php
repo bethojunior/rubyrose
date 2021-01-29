@@ -26,8 +26,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::group(['as' => 'products'], function () {
             Route::get('', 'Products\ProductsController@index')->name('.index');
             Route::get('list', 'Products\ProductsController@show')->name('.show');
+            Route::get('{id}', 'Products\ProductsController@edit')->name('.edit');
             Route::post('insert', 'Products\ProductsController@insert')->name('.insert');
             Route::post('update', 'Products\ProductsController@update')->name('.update');
+            Route::post('{id}', 'Products\ProductsController@updateProduct')->name('.updateProduct');
+
         });
     });
 

@@ -63,6 +63,7 @@
 
                         <input id="{{ $product->id }}" type="submit" value="@if($product->status == \App\Constants\ProductStatus::ATIVO)Desativar @endif @if($product->status == \App\Constants\ProductStatus::DESATIVADO) Ativar @endif" class="disable-product col-lg-12 col-sm-12 btn btn-danger">
                     </form>
+                    <button class="col-lg-12 col-sm-12 btn btn-info"><a style="color: white" href="{{ $product->id }}">Editar</a></button>
                 </div>
             </div>
         @endforeach
