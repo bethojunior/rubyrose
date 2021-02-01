@@ -34,6 +34,6 @@ Route::group(['prefix' => 'productsImage'], function () {
 
 Route::group(['prefix' => 'phone'], function () {
     Route::group(['as' => 'phone'], function () {
-        Route::post('', 'Us\UsController@getPhone')->name('.getPhone');
+        Route::get('', 'Us\UsController@getPhone')->name('.getPhone');
     });
 });
