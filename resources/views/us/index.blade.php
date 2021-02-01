@@ -23,11 +23,9 @@
         @method('POST')
         @csrf
 
-        <div class="form-control">
-            <p>Whats app</p>
-        </div>
 
         <div class="form-group col-lg-4 col-sm-12">
+            <span>Whats app</span>
             <input value="{{ $phone[0]['phone'] }}" required type="text" name="phone" class="form-control">
         </div>
 
