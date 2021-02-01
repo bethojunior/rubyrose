@@ -50,7 +50,7 @@ class UsController extends Controller
         {
             return ApiResponse::error('',$exception->getMessage());
         }
-        return ApiResponse::success('',$phone[0]);
+        return ApiResponse::success($phone[0],'');
     }
 
     /**
