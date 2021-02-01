@@ -23,7 +23,7 @@
         @method('POST')
         @csrf
         <div class="form-group col-lg-4 col-sm-12">
-            <input value="{{ $phone[0]['phone'] }}" required type="text" name="content" class="form-control">
+            <input value="{{ $phone[0]['phone'] }}" required type="text" name="phone" class="form-control">
         </div>
 
         <div class="col-lg-12 col-sm-12">

@@ -40,7 +40,7 @@ class UsController extends Controller
 
     /**
      * @param PhoneService $phoneService
-     * @return \Illuminate\Http\JsonResponse    
+     * @return \Illuminate\Http\JsonResponse
      */
     public function getPhone(PhoneService $phoneService)
     {
