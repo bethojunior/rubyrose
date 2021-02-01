@@ -31,3 +31,9 @@ Route::group(['prefix' => 'productsImage'], function () {
         Route::delete('{id}', 'Products\ProductsController@deleteImage');
     });
 });
+
+Route::group(['prefix' => 'phone'], function () {
+    Route::group(['as' => 'phone'], function () {
+        Route::post('', 'Us\UsController@getPhone')->name('.getPhone');
+    });
+});

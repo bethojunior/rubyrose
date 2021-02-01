@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Us;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Responses\ApiResponse;
 use App\Services\Phone\PhoneService;
 use App\Services\Us\UsService;
 use Illuminate\Http\Request;
@@ -14,6 +15,10 @@ class UsController extends Controller
 
     private $service;
 
+    /**
+     * UsController constructor.
+     * @param UsService $service
+     */
     public function __construct(UsService $service)
     {
         $this->service = $service;
@@ -31,6 +36,21 @@ class UsController extends Controller
             'us' => $us,
             'phone' => $phone
         ]);
+    }
+
+    /**
+     * @param PhoneService $phoneService
+     * @return \Illuminate\Http\JsonResponse    
+     */
+    public function getPhone(PhoneService $phoneService)
+    {
+        try{
+            $phone = $phoneService->getLast();
+        }catch (\Exception $exception)
+        {
+            return ApiResponse::error('',$exception->getMessage());
+        }
+        return ApiResponse::success('',$phone[0]);
     }
 
     /**
