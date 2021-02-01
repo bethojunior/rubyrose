@@ -22,9 +22,11 @@
     <form class="row col-lg-12 col-sm-12" method="POST" action="{{ route('us.createPhone') }}">
         @method('POST')
         @csrf
-        <h1>
+
+        <div class="form-control">
             <p>Whats app</p>
-        </h1>
+        </div>
+
         <div class="form-group col-lg-4 col-sm-12">
             <input value="{{ $phone[0]['phone'] }}" required type="text" name="phone" class="form-control">
         </div>
