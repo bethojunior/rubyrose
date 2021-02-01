@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Us;
 
 
 use App\Http\Controllers\Controller;
+use App\Services\Phone\PhoneService;
 use App\Services\Us\UsService;
 use Illuminate\Http\Request;
 
@@ -21,11 +22,15 @@ class UsController extends Controller
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(PhoneService $phoneService)
     {
         $us = $this->service
             ->getLast();
-        return view('us.index')->with(['us' => $us]);
+        $phone = $phoneService->getLast();
+        return view('us.index')->with([
+            'us' => $us,
+            'phone' => $phone
+        ]);
     }
 
     /**
@@ -37,6 +42,24 @@ class UsController extends Controller
         try{
             $insert = $this
                 ->service
+                ->create($request->all());
+        }catch (\Exception $exception){
+            return redirect()->route('us.index')
+                ->with('error', $exception->getMessage());
+        }
+        return redirect()->route('us.index')
+            ->with('success', 'Inserido com sucesso');
+    }
+
+    /**
+     * @param Request $request
+     * @param PhoneService $phoneService
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function createPhone(Request $request , PhoneService $phoneService)
+    {
+        try{
+            $insert = $phoneService
                 ->create($request->all());
         }catch (\Exception $exception){
             return redirect()->route('us.index')

@@ -226,9 +226,9 @@ return [
             'icon' => 'fa fa-ticket',
             'url'  => 'sales'
         ],
-        ['header' => 'Sobre nós'],
+        ['header' => 'Gerenciamento'],
         [
-            'text' => 'Sobre nós',
+            'text' => 'Gerenciamento da aplicação',
             'icon' => 'fa fa-users',
             'url'  => 'us'
         ],

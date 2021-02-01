@@ -61,6 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::group(['as' => 'us'], function () {
             Route::get('', 'Us\UsController@index')->name('.index');
             Route::post('', 'Us\UsController@create')->name('.create');
+            Route::post('phone', 'Us\UsController@createPhone')->name('.createPhone');
         });
     });
 

@@ -19,6 +19,17 @@
         </div>
     </form>
 
+    <form class="row col-lg-12 col-sm-12" method="POST" action="{{ route('us.createPhone') }}">
+        @method('POST')
+        @csrf
+        <div class="form-group col-lg-4 col-sm-12">
+            <input value="{{ $phone[0]['phone'] }}" required type="text" name="content" class="form-control">
+        </div>
+
+        <div class="col-lg-12 col-sm-12">
+            <input type="submit" class="btn btn-outline-info" value="Salvar">
+        </div>
+    </form>
 
 @stop
 

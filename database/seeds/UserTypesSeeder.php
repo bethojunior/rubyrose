@@ -19,5 +19,9 @@ class UserTypesSeeder extends Seeder
         DB::table('us')->insert(
             ['content' => 'teste']
         );
+
+        DB::table('phones')->insert(
+            ['phone' => '5585994253764']
+        );
     }
 }
