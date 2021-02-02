@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('status');
             $table->string('color');
-            $table->string('description');
+            $table->longText('description');
             $table->float('value');
             $table->float('promotional_value')->nullable();
             $table->integer('minimum_order');
